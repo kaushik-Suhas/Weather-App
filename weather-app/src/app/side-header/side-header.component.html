@@ -1,4 +1,10 @@
 <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened [ngStyle]="{width: '250px'}">Drawer content</mat-drawer>
-    <mat-drawer-content>Main content</mat-drawer-content>
+    <mat-drawer mode="side" opened [ngStyle]="{width: '250px', backgroundColor: 'Black', opacity:'85%'}">  
+        <app-welcome></app-welcome>
+    </mat-drawer>
+    <mat-drawer-content>
+        <img src="../../assets/bg-image1.jpg" alt="Background-Image" class="bgimage">
+        <h1 class="title">Weather Forecast</h1>
+        </mat-drawer-content>
   </mat-drawer-container>
+ 
