@@ -5,17 +5,24 @@
         </mat-form-field>
     </form>
 </section> -->
-<ol>
-    <li>
-      <mat-form-field appearance="fill">
-        <mat-label>What's your name?</mat-label>
-        <input matInput [(ngModel)]="name">
-      </mat-form-field>
-    </li>
-    <li>
-      <button mat-raised-button (click)="openDialog()">Pick one</button>
-    </li>
-    <li *ngIf="location">
-      You chose: <i>{{location}}</i>
-    </li>
-  </ol>
+
+<div class="container">
+  <h1 class="title">Weather Forecast</h1>
+<ul>
+  <div>
+    <mat-form-field class="inp" appearance="fill">
+      <mat-label>What's your name?</mat-label>
+      <input matInput [(ngModel)]="name">
+    </mat-form-field>
+  </div>
+  <div class="btn">
+    <button type="submit" [disabled]="!this.name"
+    mat-raised-button [ngStyle]="{backgroundColor: 'black', color: 'white'}"
+     (click)="openDialog()">Select Location</button>
+  </div>
+  <div *ngIf="location">
+    You chose: <i>{{location}}</i>
+  </div>
+</ul>
+</div>
+

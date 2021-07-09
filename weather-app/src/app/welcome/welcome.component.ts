@@ -1,10 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatDialog } from '@angular/material/dialog';
+import { DialogOverview } from './dialog-overview/dialog-overview.component';
 
-export interface DialogData {
-  name: string;
-  location: string;
-}
 
 @Component({
   selector: 'app-welcome',
@@ -16,12 +13,14 @@ export class WelcomeComponent  {
   location: string;
   name: string;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
+  openDialog() {
+    console.log('i am clicked')
     const dialogRef = this.dialog.open(DialogOverview, {
-      width: '250px',
-      data: {name: this.name, location: this.location}
+      width: '800px',
+      height: '700px',
+      data: {name: this.name, animal: this.location}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -29,20 +28,9 @@ export class WelcomeComponent  {
       this.location = result;
     });
   }
+
+  
+
+  
 }
 
-@Component({
-  selector: 'dialog-overview',
-  templateUrl: 'dialog-overview.html',
-})
-export class DialogOverview {
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverview>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}

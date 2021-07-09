@@ -8,19 +8,23 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SideHeaderComponent } from './side-header/side-header.component';
+import { FormsModule } from '@angular/forms';
+import { DialogOverview } from './welcome/dialog-overview/dialog-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    SideHeaderComponent
+    SideHeaderComponent,
+    DialogOverview
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,18 +2,15 @@
     width: 100%;
     height: 100%;
   }
+
 .bgimage{
-    width: 1188px;
-    height: 827px;
-    opacity: 45%;
-}
-.title{
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bolder;
-    font-style: normal;
-    margin-top: -510px;
-    margin-left: 300px;
-    font-size: 75px;
-    color: black;
-    opacity: 100%;
+    background-image: url(../../assets/bg-image1.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
