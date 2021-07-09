@@ -4,11 +4,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
-    imports: [MatFormFieldModule, MatInputModule, MatSidenavModule, MatDialogModule, MatButtonModule],
-    exports: [MatFormFieldModule, MatInputModule, MatSidenavModule, MatDialogModule, MatButtonModule]
+    imports: [MatFormFieldModule, 
+              MatInputModule, 
+              MatSidenavModule, 
+              MatDialogModule, 
+              MatButtonModule, 
+              MatIconModule],
+              
+    exports: [MatFormFieldModule, 
+              MatInputModule, 
+              MatSidenavModule, 
+              MatDialogModule, 
+              MatButtonModule, 
+              MatIconModule]
 })
 export class MaterialModule {
 

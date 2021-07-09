@@ -18,8 +18,8 @@ export class WelcomeComponent  {
   openDialog() {
     console.log('i am clicked')
     const dialogRef = this.dialog.open(DialogOverview, {
-      width: '800px',
-      height: '700px',
+      width: '450px',
+      height: '350px',
       data: {name: this.name, animal: this.location}
     });
 
