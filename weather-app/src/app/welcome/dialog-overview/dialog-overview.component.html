@@ -1,7 +1,8 @@
 <h1 mat-dialog-title style=" 
 font-family: 'Times New Roman', Times, serif; 
 text-align: center;
-font-size: 50px;">
+font-size: 50px;
+color: white;">
 Hi {{data.name}}</h1>
 
 <br>
@@ -10,7 +11,8 @@ Hi {{data.name}}</h1>
   <p style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
   text-align: center;
-  font-size: 30px;"> Enter your Location! </p>
+  font-size: 30px;
+  color: white;"> Enter your Location! </p>
 
 <br>
 
@@ -18,17 +20,19 @@ Hi {{data.name}}</h1>
   font-family: 'Times New Roman', Times, serif; 
   margin-left: 100px; 
   "appearance="outline">
-    <mat-label>Location</mat-label>
-    <input matInput [(ngModel)]="data.location">
+    <mat-label style="color: white;">Location</mat-label>
+    <input matInput 
+    style="color: white;"
+    [(ngModel)]="data.location">
   </mat-form-field>
 </div>
 
 <div mat-dialog-actions 
 style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
-  margin-left: 118px;" >
+  margin-left: 108px;" >
   <button mat-raised-button (click)="onNoClick()" 
   [ngStyle]="{backgroundColor: 'black', color: 'white'}">No Thanks</button>
   <button mat-raised-button [mat-dialog-close]="data.location" cdkFocusInitial 
-  [ngStyle]="{backgroundColor: 'black', color: 'white'}">Ok</button>
+  [ngStyle]="{backgroundColor: 'black', color: 'white'}">Proceed</button>
 </div>
