@@ -28,7 +28,7 @@ export class WelcomeComponent  {
     const dialogRef = this.dialog.open(DialogOverview, {
       width: '450px',
       height: '350px',
-      data: {name: this.name}
+      data: {name: this.nameValidations.get('name').value}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -36,11 +36,6 @@ export class WelcomeComponent  {
       this.location = result;
     });
   }
-
-  getCursor() {
-    this.name? 'pointer' : 'not-allowed';
-  }
-
 
   }
 

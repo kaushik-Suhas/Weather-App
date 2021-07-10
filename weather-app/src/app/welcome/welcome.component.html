@@ -21,7 +21,7 @@
   </div>
   <div class="btn">
     <button type="submit" [disabled]="nameValidations.controls['name'].invalid"
-    mat-raised-button [ngStyle]="{backgroundColor: 'black', color: 'white', cursor: getCursor()}"
+    mat-raised-button [ngStyle]="{backgroundColor: 'black', color: 'white', cursor: 'pointer'}"
      (click)="openDialog()">Select Location</button>
   </div>
   <div *ngIf="location">

@@ -15,7 +15,6 @@
     margin-top: 0px;
     margin-left: 450px;
     opacity: 100%;
-
 }
 
 .title{
@@ -25,14 +24,12 @@
     font-size: 75px;
     color: black;
     margin-top: 300px;
-    /* margin-left: 410px; */
     text-align: center;
 }
 
+button:disabled {
+    cursor: not-allowed !important;
+}
 
-/* .disable:disabled {
-    cursor: not-allowed;
-    pointer-events: all !important;
-  } */
-  
+
   
