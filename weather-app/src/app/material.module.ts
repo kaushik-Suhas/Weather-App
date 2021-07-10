@@ -5,6 +5,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
 
 
 @NgModule({
@@ -13,14 +15,18 @@ import {MatIconModule} from '@angular/material/icon';
               MatSidenavModule, 
               MatDialogModule, 
               MatButtonModule, 
-              MatIconModule],
+              MatIconModule,
+              MatSelectModule,
+              MatAutocompleteModule],
               
     exports: [MatFormFieldModule, 
               MatInputModule, 
               MatSidenavModule, 
               MatDialogModule, 
               MatButtonModule, 
-              MatIconModule]
+              MatIconModule,
+              MatSelectModule,
+              MatAutocompleteModule]
 })
 export class MaterialModule {
 

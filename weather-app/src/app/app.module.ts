@@ -8,15 +8,16 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SideHeaderComponent } from './side-header/side-header.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogOverview } from './welcome/dialog-overview/dialog-overview.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     SideHeaderComponent,
-    DialogOverview
+    DialogOverview,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,9 @@ import { DialogOverview } from './welcome/dialog-overview/dialog-overview.compon
     MaterialModule,
     AppRoutingModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

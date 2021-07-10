@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialog } from '@angular/material/dialog';
 import { DialogOverview } from './dialog-overview/dialog-overview.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,17 +11,24 @@ import { DialogOverview } from './dialog-overview/dialog-overview.component';
 })
 export class WelcomeComponent  {
 
-  location: string;
   name: string;
+  location: string;
+  nameValidations: FormGroup;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.nameValidations = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]]
+    });
+
+  }
 
   openDialog() {
-    console.log('i am clicked')
     const dialogRef = this.dialog.open(DialogOverview, {
       width: '450px',
       height: '350px',
-      data: {name: this.name, animal: this.location}
+      data: {name: this.name}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -29,8 +37,12 @@ export class WelcomeComponent  {
     });
   }
 
-  
+  getCursor() {
+    this.name? 'pointer' : 'not-allowed';
+  }
 
-  
-}
+
+  }
+
+
 

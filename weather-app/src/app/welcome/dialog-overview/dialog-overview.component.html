@@ -19,18 +19,25 @@ Hi {{data.name}}</h1>
   <mat-form-field style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
   margin-left: 100px; 
-  "appearance="outline">
+  "appearance="outline" class="dropdown-toggle">
     <mat-label style="color: white;">Location</mat-label>
     <input matInput 
     style="color: white;"
-    [(ngModel)]="data.location">
+    (input)="onInputChange($event)"  [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let location of autocompleteLocation" [value]="location">
+        {{location}}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
 </div>
+
+
 
 <div mat-dialog-actions 
 style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
-  margin-left: 106px;" >
+  margin-left: 108px;" >
   <button mat-raised-button (click)="onNoClick()" 
   [ngStyle]="{backgroundColor: 'black', color: 'white'}"
   class="lo-btn">No Thanks</button>
