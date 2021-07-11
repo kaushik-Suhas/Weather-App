@@ -26,8 +26,8 @@ export class WelcomeComponent  {
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogOverview, {
-      width: '450px',
-      height: '350px',
+      width: '500px',
+      height: '500px',
       data: {name: this.nameValidations.get('name').value}
     });
 

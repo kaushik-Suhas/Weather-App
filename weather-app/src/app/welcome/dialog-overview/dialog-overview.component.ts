@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Inject } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { DialogData } from "./dialog-overview.model";
 
@@ -12,15 +13,23 @@ import { DialogData } from "./dialog-overview.model";
 export class DialogOverview {
  location: string;
  autocompleteLocation: string[] = []; 
+ Days: number;
+ locationValidations: FormGroup;
 
 constructor(
     public dialogRef: MatDialogRef<DialogOverview>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private http: HttpClient) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private http: HttpClient, private formBuilder: FormBuilder) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+  ngOnInit() {
+    this.locationValidations = this.formBuilder.group({
+      location: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]],
+      days: ['', Validators.required]
+    });
+  }
+  
   onInputChange(event: Event) {
     this.location = (<HTMLInputElement>event.target).value;
     console.log(this.location)
@@ -31,8 +40,14 @@ constructor(
             for(let i= 0; i<Object.keys(response).length; i++){
               this.autocompleteLocation.push(response[i].LocalizedName);
             }
+            if(Object.keys(response).length === 0 && this.autocompleteLocation[0] !== 'No Match') {
+              this.autocompleteLocation.push("No Match")
+              return
+            }
+          },error => {
+            console.log(error)
           })
     }
-    }
   }
-
+    
+}

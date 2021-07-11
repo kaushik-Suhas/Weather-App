@@ -11,37 +11,47 @@ Hi {{data.name}}</h1>
   <p style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   color: white;"> Enter your Location! </p>
 
 <br>
-
+<form [formGroup]="locationValidations">
   <mat-form-field style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
-  margin-left: 100px; 
+  margin-left: 125px;
   "appearance="outline" class="dropdown-toggle">
     <mat-label style="color: white;">Location</mat-label>
     <input matInput 
-    style="color: white;"
+    style="color: white;" formControlName="location"
     (input)="onInputChange($event)"  [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option *ngFor="let location of autocompleteLocation" [value]="location">
         {{location}}
       </mat-option>
     </mat-autocomplete>
+ <mat-error *ngIf="locationValidations.get('location').hasError('pattern')"> Enter a valid Location! </mat-error>
+</mat-form-field>
+    <mat-form-field style="font-size: larger; 
+    font-family: 'Times New Roman', Times, serif; 
+    margin-left: 125px; 
+    "appearance="outline" class="dropdown-toggle">
+    <mat-label style="color: white;">No of Days</mat-label>
+    <input type="number" matInput min="1" formControlName="days"
+    style="color: white;">
   </mat-form-field>
+</form>
 </div>
-
 
 
 <div mat-dialog-actions 
 style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
-  margin-left: 108px;" >
+  margin-left: 115px;" >
   <button mat-raised-button (click)="onNoClick()" 
   [ngStyle]="{backgroundColor: 'black', color: 'white'}"
   class="lo-btn">No Thanks</button>
-  <button mat-raised-button [mat-dialog-close]="data.location" cdkFocusInitial 
-  [ngStyle]="{backgroundColor: 'black', color: 'white'}"
+  <button mat-raised-button [mat-dialog-close]="data.location" cdkFocusInitial
+  [disabled]="locationValidations.controls['location'].invalid"
+  [ngStyle]="{backgroundColor: 'black', color: 'white',  cursor: 'pointer'}"
   class="hi-btn">Proceed</button>
 </div>

@@ -5,3 +5,7 @@
 .hi-btn{
     border-color: white;
 }
+
+button:disabled {
+    cursor: not-allowed !important;
+}
