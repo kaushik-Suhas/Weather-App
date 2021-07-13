@@ -9,3 +9,7 @@
 button:disabled {
     cursor: not-allowed !important;
 }
+
+
+::ng-deep .mat-select-value{    
+    color: white!important;  }

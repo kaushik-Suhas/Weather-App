@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Inject } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, NumberValueAccessor, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { DialogData } from "./dialog-overview.model";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -17,9 +17,11 @@ interface Day {
 
 export class DialogOverview {
  location: string;
- autocompleteLocation: string[] = []; 
+ autocompleteLocation = []; 
  locationValidations: FormGroup;
- 
+ locationSelected = '';
+ daysSelected: Number;
+
  days: Day[] = [
    { value: 1, viewValue: '1 Day'},
    { value: 5, viewValue: '5 Days'},
@@ -53,10 +55,15 @@ constructor(
     console.log(this.location)
     if (this.location.length > 3) {
       console.log('in here')
-       this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=I3za6sPhS7BZsp2s70GViaFav7xZhq0k&q=${this.location}`)
+       this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=GO7YhgH0FFaTEa0HsAieNGdofPFn5sfA&q=${this.location}`)
           .subscribe(response => {
+            console.log(response)
             for(let i= 0; i<Object.keys(response).length; i++){
-              this.autocompleteLocation.push(response[i].LocalizedName);
+              const obj = {
+                name: response[i].LocalizedName,
+                key: response[i].Key
+              }
+              this.autocompleteLocation.push(obj);
             }
             if(Object.keys(response).length === 0 && this.autocompleteLocation[0] !== 'No Match') {
               this.autocompleteLocation.push("No Match")
@@ -69,6 +76,12 @@ constructor(
     }
   }
     openResult() {
+      const location = this.autocompleteLocation.find(x => x.name === this.locationSelected);
+      this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.daysSelected}day/${location.key}?apikey=GO7YhgH0FFaTEa0HsAieNGdofPFn5sfA`)
+          .subscribe(response => {
+            console.log(response)
+          })
       this.router.navigate(['result'], {relativeTo: this.route})
     }
-}
+}    
+
