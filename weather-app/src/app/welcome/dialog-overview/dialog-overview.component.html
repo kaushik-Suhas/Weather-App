@@ -10,7 +10,7 @@ Hi {{data.name}}</h1>
 <div mat-dialog-content>
   <p style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
-  text-align: center;
+  text-align: center; 
   font-size: 20px;
   color: white;"> Enter your Location! </p>
 
@@ -53,5 +53,6 @@ style="font-size: larger;
   <button mat-raised-button [mat-dialog-close]="data.location" cdkFocusInitial
   [disabled]="locationValidations.controls['location'].invalid"
   [ngStyle]="{backgroundColor: 'black', color: 'white',  cursor: 'pointer'}"
-  class="hi-btn">Proceed</button>
+  class="hi-btn"
+  (click)="openResult">Proceed</button>
 </div>

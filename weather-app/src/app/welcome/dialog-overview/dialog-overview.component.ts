@@ -42,12 +42,15 @@ constructor(
             }
             if(Object.keys(response).length === 0 && this.autocompleteLocation[0] !== 'No Match') {
               this.autocompleteLocation.push("No Match")
-              return
+              return 
+              
             }
           },error => {
             console.log(error)
           })
     }
   }
-    
+    openResult() {
+      
+    }
 }
