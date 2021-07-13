@@ -3,7 +3,12 @@ import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { DialogData } from "./dialog-overview.model";
+import { ActivatedRoute, Router } from "@angular/router";
 
+interface Day {
+  value: number;
+  viewValue: string;
+}
 
 @Component({
     selector: 'app-dialog',
@@ -13,12 +18,25 @@ import { DialogData } from "./dialog-overview.model";
 export class DialogOverview {
  location: string;
  autocompleteLocation: string[] = []; 
- Days: number;
  locationValidations: FormGroup;
+ 
+ days: Day[] = [
+   { value: 1, viewValue: '1 Day'},
+   { value: 5, viewValue: '5 Days'},
+   { value: 10, viewValue: '10 Days'},
+   { value: 15, viewValue: '15 Days'}
+ ];
+
 
 constructor(
     public dialogRef: MatDialogRef<DialogOverview>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private http: HttpClient, private formBuilder: FormBuilder) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, 
+    private http: HttpClient, 
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute) {
+
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -51,6 +69,6 @@ constructor(
     }
   }
     openResult() {
-      
+      this.router.navigate(['result'], {relativeTo: this.route})
     }
 }

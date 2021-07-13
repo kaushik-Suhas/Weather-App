@@ -25,19 +25,30 @@ Hi {{data.name}}</h1>
     style="color: white;" formControlName="location"
     (input)="onInputChange($event)"  [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let location of autocompleteLocation" [value]="location">
+      <mat-option style="background-color: black; color: white; border-color: white; border-width:thick;" *ngFor="let location of autocompleteLocation" [value]="location">
         {{location}}
       </mat-option>
     </mat-autocomplete>
  <mat-error *ngIf="locationValidations.get('location').hasError('pattern')"> Enter a valid Location! </mat-error>
 </mat-form-field>
-    <mat-form-field style="font-size: larger; 
+    <!-- <mat-form-field style="font-size: larger; 
     font-family: 'Times New Roman', Times, serif; 
     margin-left: 125px; 
-    "appearance="outline" class="dropdown-toggle">
+    "appearance="outline" class="dropdown-toggle" role="button">
     <mat-label style="color: white;">No of Days</mat-label>
     <input type="number" matInput min="1" formControlName="days"
-    style="color: white;">
+    style="color: white;"> --> -->
+  <!-- </mat-form-field> -->
+  <mat-form-field style="font-size: larger; 
+  font-family: 'Times New Roman', Times, serif; 
+  margin-left: 125px; 
+  "appearance="outline">
+    <mat-label style="color: white;"> No of Days </mat-label>
+    <mat-select style="color: white;">
+      <mat-option style="background-color: black; color: white; border-color: white; border-width:thick;" *ngFor="let day of days" [value]="day.value">
+        {{ day.viewValue }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 </form>
 </div>
@@ -56,3 +67,4 @@ style="font-size: larger;
   class="hi-btn"
   (click)="openResult">Proceed</button>
 </div>
+[disabled]="nameValidations.controls['name'].invalid"
