@@ -55,7 +55,7 @@ constructor(
     console.log(this.location)
     if (this.location.length > 3) {
       console.log('in here')
-       this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=GO7YhgH0FFaTEa0HsAieNGdofPFn5sfA&q=${this.location}`)
+       this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=nPwa6JMnEDb53DQv4rjwEZtERfAIqLAP&q=${this.location}`)
           .subscribe(response => {
             console.log(response)
             for(let i= 0; i<Object.keys(response).length; i++){
@@ -77,11 +77,7 @@ constructor(
   }
     openResult() {
       const location = this.autocompleteLocation.find(x => x.name === this.locationSelected);
-      this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.daysSelected}day/${location.key}?apikey=GO7YhgH0FFaTEa0HsAieNGdofPFn5sfA`)
-          .subscribe(response => {
-            console.log(response)
-          })
-      this.router.navigate(['result'], {relativeTo: this.route})
+      this.router.navigate(['/results', location.key, this.daysSelected ])
     }
 }    
 

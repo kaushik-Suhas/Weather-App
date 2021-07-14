@@ -1,1 +1,42 @@
-<p>result works!</p>
+<h1 class="container" >Location: {{ this.location }} </h1>
+<div class="container">
+    <table class=" table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Night</th>
+                <th>Sources</th>
+                <th>Temperature (F)</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td><span>{{ getDate(item.Date) }}</span></td>
+                <td><span>
+                    <ul>
+                        <li> Type: {{ item.Day["IconPhrase"] }}</li>
+                        <li> Precipitation-Intensity: {{ item.Day["PrecipitationIntensity"] }} </li>
+                        <li> Precipitation-Type: {{ item.Day["PrecipitationType"] }}</li>
+                </ul>
+                </span></td>
+                <td><span>
+                    <ul>
+                        <li> Type: {{ item.Night["IconPhrase"] }}</li>
+                        <li> Precipitation-Intensity: {{ item.Night["PrecipitationIntensity"] }} </li>
+                        <li> Precipitation-Type: {{ item.Night["PrecipitationType"] }}</li>
+                    </ul>
+                    </span></td>
+                <td><span>{{ item.Sources }}</span></td>
+                <td><span>
+                    <ul>
+                        <li>Max Temperature: {{ item.Temperature["Maximum"]["Value"] }}</li>
+                        <li>Min Temperature: {{ item.Temperature["Minimum"]["Value"] }}</li>
+                    </ul>
+                </span></td>
+                <td><span>{{ item.Link }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
