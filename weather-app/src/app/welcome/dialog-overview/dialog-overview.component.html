@@ -36,10 +36,10 @@ Hi {{data.name}}</h1>
 
 <mat-form-field style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
-  margin-left: 125px; 
+  margin-left: 125px;
   "appearance="outline">
     <mat-label style="color: white;"> No of Days </mat-label>
-    <mat-select  [(value)]="daysSelected">
+    <mat-select  [(value)]="daysSelected" style="background-color: white; ">
       <mat-option class="not-empty-select" style="background-color: black; color: white; border-color: white; border-width:thick;" *ngFor="let day of days" [value]="day.value">
         {{ day.viewValue }}
       </mat-option>

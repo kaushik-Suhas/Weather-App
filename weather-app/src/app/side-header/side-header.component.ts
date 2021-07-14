@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-side-header',
@@ -7,13 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./side-header.component.css']
 })
 export class SideHeaderComponent implements OnInit {
+  bgImgToggler: boolean = false;
+  constructor(private router: Router) {
+    router.events.subscribe(event => {
 
-  constructor(private router: Router) { }
+      if (event instanceof NavigationEnd ) {
+         this.bgImgToggler = event.url === '/'; 
+      }
+    });
+   }
 
   ngOnInit(): void {
-  }
+    }
+
+
  goToWelcome(){
-   this.router.navigate(['/welcome'])
+   this.router.navigate(['/'])
   }
 
   goToResult() {

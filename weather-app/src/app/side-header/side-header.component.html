@@ -15,11 +15,11 @@
             </mat-list>
     </mat-drawer>
     <mat-drawer-content>
-        <div>
-        <div class="bgimage"></div>
+        <div >
+        <div class="bgimage" *ngIf="bgImgToggler"></div>
         <router-outlet></router-outlet>
        <!--  <app-welcome></app-welcome> -->
         </div>
         </mat-drawer-content>
   </mat-drawer-container>
- 
+

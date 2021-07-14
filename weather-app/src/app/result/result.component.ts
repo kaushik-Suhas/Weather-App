@@ -11,6 +11,7 @@ export class ResultComponent implements OnInit {
   data: {
     location: string;
     days: string;
+    name: string;
   }
   items = [];
   location: string; 
@@ -19,8 +20,9 @@ export class ResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = {
-      location: this.route.snapshot.params['key'],
-      days: this.route.snapshot.params['days']
+      location: this.route.firstChild.snapshot.params['key'],
+      days: this.route.firstChild.snapshot.params['days'],
+      name: this.route.firstChild.snapshot.params['name'],
     };
 
     this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.data.days}day/${this.data.location}?apikey=I3za6sPhS7BZsp2s70GViaFav7xZhq0k`)

@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogOverview } from './welcome/dialog-overview/dialog-overview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultComponent } from './result/result.component';
+import { ResultsComponent } from './result/results/results.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ResultComponent } from './result/result.component';
     SideHeaderComponent,
     DialogOverview,
     ResultComponent,
+    ResultsComponent,
   ],
   imports: [
     BrowserModule,

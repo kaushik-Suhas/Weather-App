@@ -77,7 +77,7 @@ constructor(
   }
     openResult() {
       const location = this.autocompleteLocation.find(x => x.name === this.locationSelected);
-      this.router.navigate(['/results', location.key, this.daysSelected ])
+      this.router.navigate(['/results', location.key, this.daysSelected, location.name ])
     }
 }    
 
