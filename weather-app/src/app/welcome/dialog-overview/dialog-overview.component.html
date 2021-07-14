@@ -33,15 +33,8 @@ Hi {{data.name}}</h1>
     </mat-autocomplete>
  <mat-error *ngIf="locationValidations.get('location').hasError('pattern')"> Enter a valid Location! </mat-error>
 </mat-form-field>
-    <!-- <mat-form-field style="font-size: larger; 
-    font-family: 'Times New Roman', Times, serif; 
-    margin-left: 125px; 
-    "appearance="outline" class="dropdown-toggle" role="button">
-    <mat-label style="color: white;">No of Days</mat-label>
-    <input type="number" matInput min="1" formControlName="days"
-    style="color: white;"> --> -->
-  <!-- </mat-form-field> -->
-  <mat-form-field style="font-size: larger; 
+
+<mat-form-field style="font-size: larger; 
   font-family: 'Times New Roman', Times, serif; 
   margin-left: 125px; 
   "appearance="outline">
@@ -51,7 +44,7 @@ Hi {{data.name}}</h1>
         {{ day.viewValue }}
       </mat-option>
     </mat-select>
-  </mat-form-field>
+</mat-form-field>
 </form>
 </div>
 

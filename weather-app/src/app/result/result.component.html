@@ -1,4 +1,6 @@
-<h1 class="container" >Location: {{ this.location }} </h1>
+<div *ngIf="location">
+    You chose: <i>{{location}}</i>
+  </div>
 <div class="container">
     <table class=" table table-bordered table-striped">
         <thead>
