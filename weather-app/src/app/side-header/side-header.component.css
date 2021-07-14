@@ -14,3 +14,28 @@
     top: 0;
     left: 0;
 }
+
+.title{
+  font-size: 30px;
+  font-family: cursive;
+  text-align: center;
+  margin-top: 90px;
+  letter-spacing: 2px;
+  line-height: 1.7;
+}
+
+.menu{
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 60px;
+  margin-left: 45px;
+}
+
+.mt{
+  font-size: 15px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}

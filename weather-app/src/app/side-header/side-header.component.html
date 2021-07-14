@@ -1,10 +1,16 @@
 <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened [ngStyle]="{width: '250px', backgroundColor: 'Black', opacity:'85%'}">  
-        
+    <mat-drawer mode="side" opened style="color: white;"  [ngStyle]="{width: '250px', backgroundColor: 'Black', opacity:'85%'}">  
+        <h1 class="title"> Welcome to Live Weather Forecast </h1>
+        <button class="menu" mat-button [matMenuTriggerFor]="menu"> Contents </button>
+            <mat-menu class="mt" #menu="matMenu">
+                <button mat-menu-item> Welcome </button>
+                <button mat-menu-item> Result </button>
+            </mat-menu>
     </mat-drawer>
     <mat-drawer-content>
         <div>
         <div class="bgimage"></div>
+       
         <app-welcome></app-welcome>
         </div>
         </mat-drawer-content>
