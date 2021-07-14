@@ -1,6 +1,8 @@
 table{
     width: fit-content;
     border: 5px black;
+    table-layout: auto;
+    margin-top: 110px;
 }
 
 th, td {

@@ -23,7 +23,7 @@ export class ResultComponent implements OnInit {
       days: this.route.snapshot.params['days']
     };
 
-    this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.data.days}day/${this.data.location}?apikey=nPwa6JMnEDb53DQv4rjwEZtERfAIqLAP`)
+    this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.data.days}day/${this.data.location}?apikey=I3za6sPhS7BZsp2s70GViaFav7xZhq0k`)
         .subscribe(response  => {
           console.log(response)
          response["DailyForecasts"].map(forecast => {

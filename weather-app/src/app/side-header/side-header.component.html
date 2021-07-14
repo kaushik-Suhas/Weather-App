@@ -1,17 +1,24 @@
 <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened style="color: white;"  [ngStyle]="{width: '250px', backgroundColor: 'Black', opacity:'85%'}">  
         <h1 class="title"> Welcome to Weather Forecast </h1>
-        <button class="menu" mat-button [matMenuTriggerFor]="menu"> Contents </button>
-            <mat-menu class="mt" #menu="matMenu">
-                <button mat-menu-item (click)="goToWelcome()"> Welcome </button>
-                <button mat-menu-item (click)="goToResult()"> Result </button>
-            </mat-menu>
+        <!-- <h3  > Contents </h3> -->
+        <div mat-subheader class="menu" > Contents </div>
+            <mat-list class="mt" role="list">
+                <mat-list-item class="btn" 
+                                role="Welcome" 
+                                style="color: white;" 
+                                (click)="goToWelcome()"> Welcome </mat-list-item>
+                <mat-list-item class="btn" 
+                                role="Welcome" 
+                                style="color: white;" 
+                                (click)="goToResult()"> Result </mat-list-item>
+            </mat-list>
     </mat-drawer>
     <mat-drawer-content>
         <div>
         <div class="bgimage"></div>
-       
-        <app-welcome></app-welcome>
+        <router-outlet></router-outlet>
+       <!--  <app-welcome></app-welcome> -->
         </div>
         </mat-drawer-content>
   </mat-drawer-container>
