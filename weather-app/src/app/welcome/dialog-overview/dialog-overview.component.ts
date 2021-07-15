@@ -55,7 +55,7 @@ constructor(
     console.log(this.location)
     if (this.location.length > 3) {
       console.log('in here')
-       this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=I3za6sPhS7BZsp2s70GViaFav7xZhq0k&q=${this.location}`)
+       this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=GO7YhgH0FFaTEa0HsAieNGdofPFn5sfA&q=${this.location}`)
           .subscribe(response => {
             console.log(response)
             for(let i= 0; i<Object.keys(response).length; i++){

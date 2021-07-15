@@ -14,5 +14,5 @@ export class ResultsComponent implements OnInit {
   ngOnInit(): void {
     this.displayResults = this.route.firstChild?.snapshot.params ? true: false;
   }
-
+   
 }
