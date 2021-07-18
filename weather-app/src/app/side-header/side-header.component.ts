@@ -22,11 +22,11 @@ export class SideHeaderComponent implements OnInit {
     }
 
 
- goToWelcome(){
-   this.router.navigate(['/'])
+ goToWelcome(): void{
+   this.router.navigate(['/']);
   }
 
-  goToResult() {
-    this.router.navigate(['/results'])
+  goToResult(): void{
+    this.router.navigate(['/results']);
   }
 }

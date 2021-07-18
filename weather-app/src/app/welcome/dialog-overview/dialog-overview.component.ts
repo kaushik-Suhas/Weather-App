@@ -13,6 +13,7 @@ interface Day {
 @Component({
     selector: 'app-dialog',
     templateUrl: './dialog-overview.component.html',
+    styleUrls: ['./dialog-overview.component.css']
 })
 
 export class DialogOverview {
@@ -44,14 +45,15 @@ constructor(
     this.dialogRef.close();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.locationValidations = this.formBuilder.group({
       location: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]],
       days: ['', Validators.required]
     });
+    console.log(this.locationValidations)
   }
   
-  onInputChange(event: Event) {
+  onInputChange(event: Event): void {
     this.location = (<HTMLInputElement>event.target).value;
     console.log(this.location)
     if (this.location.length > 3) {
@@ -76,7 +78,7 @@ constructor(
           })
     }
   }
-    openResult() {
+    openResult(): void {
       const location = this.autocompleteLocation.find(x => x.name === this.locationSelected);
       this.router.navigate(['/results', location.key, this.daysSelected, location.name ])
     }

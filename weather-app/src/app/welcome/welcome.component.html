@@ -1,20 +1,21 @@
 
 <div class="container">
-  <h1 class="title">Weather Forecast</h1>
+  <h1 ngClass="title">Weather Forecast</h1>
 <ul>
   <div>
     <form [formGroup]="nameValidations">
-    <mat-form-field class="inp" appearance="standard">
+    <mat-form-field ngClass="inp" appearance="standard">
       <mat-label>What's your name?</mat-label>
       <input matInput formControlName="name" >  
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       <mat-error *ngIf="nameValidations.get('name').hasError('pattern')"> Enter a valid name! </mat-error>
+      <mat-error *ngIf="nameValidations.touched && !nameValidations.get('name').hasError('pattern')"> Enter a name! </mat-error>
     </mat-form-field>
   </form>
   </div>
-  <div class="btn">
-    <button type="submit" [disabled]="nameValidations.controls['name'].invalid"
-    mat-raised-button [ngStyle]="{backgroundColor: 'black', color: 'white', cursor: 'pointer'}"
+  <div ngClass="btn">
+    <button mat-raised-button disabled type="submit" 
+    [disabled]="nameValidations.controls['name'].invalid"
      (click)="openDialog()">Select Location</button>
   </div>
 </ul>

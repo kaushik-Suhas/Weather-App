@@ -17,14 +17,14 @@ export class WelcomeComponent  {
 
   constructor(public dialog: MatDialog, private formBuilder: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.nameValidations = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]]
     });
-
+     console.log(this.nameValidations)
   }
 
-  openDialog() {
+  openDialog(): void{
     const dialogRef = this.dialog.open(DialogOverview, {
       width: '500px',
       height: '500px',

@@ -1,6 +1,6 @@
 <h2 class="text-center mt-3"> Location : {{ data.name }} </h2>
    
-<div class="container" >
+<!-- <div class="container" >
     <table class=" table table-bordered table-striped">
         <thead>
             <tr>
@@ -8,7 +8,8 @@
                 <th>Day</th>
                 <th>Night</th>
                 <th>Sources</th>
-                <th>Temperature (F)</th>
+                <th>Max Temperature (F)</th>
+                <th>Min Temperature (F)</th>
                 <th>Link for Detailed Report</th>
             </tr>
         </thead>
@@ -30,14 +31,75 @@
                     </ul>
                     </span></td>
                 <td><span>{{ item.Sources }}</span></td>
-                <td><span>
-                    <ul>
-                        <li>Max Temperature: {{ item.Temperature["Maximum"]["Value"] }}</li>
-                        <li>Min Temperature: {{ item.Temperature["Minimum"]["Value"] }}</li>
-                    </ul>
-                </span></td>
+                <td><span>{{ item.Temperature["Maximum"]["Value"] }}</span></td>
+                <td><span>{{ item.Temperature["Minimum"]["Value"] }}</span></td>
                 <td><span>{{ item.Link }}</span></td>
             </tr>
         </tbody>
     </table>
+</div> -->
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+<div class="mat-elevation-z8">
+    <table mat-table *ngIf="items" [dataSource]="dataSource" aria-label="Elements">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{ getDate(element.Date) }} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="day">
+        <th mat-header-cell *matHeaderCellDef> Day </th>
+        <td mat-cell *matCellDef="let element"> 
+            <mat-list role="list">
+                <mat-list-item role="listitem"> Type: {{ element.Day["IconPhrase"] }} </mat-list-item>
+                <mat-list-item role="listitem"> Precipitation-Intensity: {{ element.Day["PrecipitationIntensity"] }} </mat-list-item>
+                <mat-list-item role="listitem"> Precipitation-Type: {{ element.Day["PrecipitationType"] }} </mat-list-item>
+              </mat-list> </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="night">
+        <th mat-header-cell *matHeaderCellDef> Night </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-list role="list">
+                <mat-list-item role="listitem"> Type: {{ element.Night["IconPhrase"] }} </mat-list-item>
+                <mat-list-item role="listitem"> Precipitation-Intensity: {{ element.Night["PrecipitationIntensity"] }} </mat-list-item>
+                <mat-list-item role="listitem"> Precipitation-Type: {{ element.Night["PrecipitationType"] }} </mat-list-item>
+              </mat-list>
+        </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="sources">
+        <th mat-header-cell *matHeaderCellDef> Sources </th>
+        <td mat-cell *matCellDef="let element"> {{ element.Sources }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="maxTemperature">
+        <th mat-header-cell *matHeaderCellDef> Max Temperature (F) </th>
+        <td mat-cell *matCellDef="let element"> {{ element.Temperature["Maximum"]["Value"] }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="minTemperature">
+        <th mat-header-cell *matHeaderCellDef> Min Temperature (F) </th>
+        <td mat-cell *matCellDef="let element"> {{ element.Temperature["Minimum"]["Value"] }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="link">
+        <th mat-header-cell *matHeaderCellDef> Link for Detailed Report </th>
+        <td mat-cell *matCellDef="let element"> {{ element.Link }} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+  </div>
 </div>

@@ -1,22 +1,20 @@
-<mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened style="color: white;"  [ngStyle]="{width: '250px', backgroundColor: 'Black', opacity:'85%'}">  
+<mat-drawer-container ngClass="example-container">
+    <mat-drawer mode="side" opened  ngClass="side-header">  
         <h1 class="title"> Welcome to Weather Forecast </h1>
         <!-- <h3  > Contents </h3> -->
         <div mat-subheader class="menu" > Contents </div>
             <mat-list class="mt" role="list">
                 <mat-list-item class="btn" 
                                 role="Welcome" 
-                                style="color: white;" 
                                 (click)="goToWelcome()"> Welcome </mat-list-item>
                 <mat-list-item class="btn" 
-                                role="Welcome" 
-                                style="color: white;" 
+                                role="Welcome"          
                                 (click)="goToResult()"> Result </mat-list-item>
             </mat-list>
     </mat-drawer>
     <mat-drawer-content>
         <div >
-        <div class="bgimage" *ngIf="bgImgToggler"></div>
+        <div ngClass="bg-image" *ngIf="bgImgToggler"></div>
         <router-outlet></router-outlet>
        <!--  <app-welcome></app-welcome> -->
         </div>

@@ -4,9 +4,11 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-dialog-container {
-    background:black !important;
+    background:white !important;
 }
 .mat-form-field-appearance-outline .mat-form-field-outline {
-    color: white;
+    color: black;
   }
 /* #ab8dd7 */
+::ng-deep .mat-select-value{    
+  color: white!important;  }

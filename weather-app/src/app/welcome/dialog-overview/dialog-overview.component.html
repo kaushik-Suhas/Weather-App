@@ -1,64 +1,47 @@
-<h1 mat-dialog-title style=" 
-font-family: 'Times New Roman', Times, serif; 
-text-align: center;
-font-size: 50px;
-color: white;">
+<h1 mat-dialog-title ngClass="dia-title" >
 Hi {{data.name}}</h1>
 
 <br>
 
 <div mat-dialog-content>
-  <p style="font-size: larger; 
-  font-family: 'Times New Roman', Times, serif; 
-  text-align: center; 
-  font-size: 20px;
-  color: white;"> Enter your Location! </p>
+  <p ngClass="dia-content" > Enter your Location! </p>
 
 <br>
 <form [formGroup]="locationValidations">
-  <mat-form-field style="font-size: larger; 
-  font-family: 'Times New Roman', Times, serif; 
-  margin-left: 125px;
-  "appearance="outline" class="dropdown-toggle">
-    <mat-label style="color: white;">Location</mat-label>
+  <mat-form-field appearance="outline" ngClass="field-location">
+    <mat-label style="color: black;">Location</mat-label>
     <input matInput 
-    style="color: white;" formControlName="location"
+    style="color: black;" formControlName="location"
     (input)="onInputChange($event)"  [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-select [(value)]="locationSelected">
-      <mat-option style="background-color: black; color: white; border-color: white; border-width:thick;" *ngFor="let location of autocompleteLocation" [value]="location.name">
+      <mat-option style="background-color: white; color: black; border-color: black; border-width:thick;" *ngFor="let location of autocompleteLocation" [value]="location.name">
         {{location.name}}
       </mat-option>
       </mat-select>
     </mat-autocomplete>
  <mat-error *ngIf="locationValidations.get('location').hasError('pattern')"> Enter a valid Location! </mat-error>
+ <mat-error *ngIf="locationValidations.controls.location.touched && !locationValidations.get('location').hasError('pattern')"> Enter a Location! </mat-error>
 </mat-form-field>
 
-<mat-form-field style="font-size: larger; 
-  font-family: 'Times New Roman', Times, serif; 
-  margin-left: 125px;
-  "appearance="outline">
-    <mat-label style="color: rgb(243, 215, 215);"> No of Days </mat-label>
-    <mat-select  [(value)]="daysSelected" style="background-color: white; ">
-      <mat-option class="not-empty-select" style="background-color: black; color: white; border-color: white; border-width:thick;" *ngFor="let day of days" [value]="day.value">
+<mat-form-field appearance="outline" ngClass="field-location" >
+    <mat-label style="color: black;"> No of Days </mat-label>
+    <mat-select  [(value)]="daysSelected" formControlName="days">
+      <mat-option *ngFor="let day of days" [value]="day.value">
         {{ day.viewValue }}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="locationValidations.controls.days.touched"> Select No of Days! </mat-error>
 </mat-form-field>
 </form>
 </div>
 
 
-<div mat-dialog-actions 
-style="font-size: larger; 
-  font-family: 'Times New Roman', Times, serif; 
-  margin-left: 115px;" >
+<div mat-dialog-actions ngClass="mat-btn">
   <button mat-raised-button (click)="onNoClick()" 
-  [ngStyle]="{backgroundColor: 'black', color: 'white'}"
-  class="lo-btn">No Thanks</button>
-  <button mat-raised-button [mat-dialog-close]="data.location" cdkFocusInitial
-  [disabled]="locationValidations.controls['location'].invalid"
-  [ngStyle]="{backgroundColor: 'black', color: 'white',  cursor: 'pointer'}"
-  class="hi-btn"
+  ngClass="lo-btn">No Thanks</button>
+  <button mat-raised-button disabled [mat-dialog-close]="data.location" cdkFocusInitial
+  [disabled]="locationValidations.controls['location'].invalid && !daysSelected"
+  ngClass="hi-btn"
   (click)="openResult()">Proceed</button>
 </div>

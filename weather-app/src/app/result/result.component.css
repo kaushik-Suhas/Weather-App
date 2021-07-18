@@ -1,4 +1,4 @@
-table{
+/* table{
     width:fit-content;
     border: 5px black;
     table-layout: auto;
@@ -9,4 +9,8 @@ table{
 
 th, td {
     text-align: center;
-}
+} */
+
+table {
+    width: 100%;
+  }

@@ -1,15 +1,45 @@
 .lo-btn{
     border-color: white;
+    background-color: black;
+    color: white;
 }
 
 .hi-btn{
     border-color: white;
+    background-color: black;
+    color: white;
 }
 
 button:disabled {
     cursor: not-allowed !important;
 }
 
-
 ::ng-deep .mat-select-value{    
     color: white!important;  }
+
+.dia-title{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 50px;
+    color: black;
+}
+
+.dia-content {
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+
+.field-location{
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 125px;
+}
+
+.mat-btn {
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 133px;
+}

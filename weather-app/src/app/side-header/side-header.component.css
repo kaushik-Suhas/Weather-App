@@ -3,7 +3,7 @@
     height: 100%;
   }
 
-.bgimage{
+.bg-image{
     background-image: url(../../assets/bg-image1.jpg); 
     background-repeat: no-repeat;
     background-size: cover;
@@ -43,5 +43,12 @@
 
 .btn{
   text-align: center;
-  /* margin-left: 60px; */
+  color: white;
+}
+
+.side-header{
+  width: 250px;
+  background-color: Black;
+  opacity: 85%; 
+  color: white;
 }
