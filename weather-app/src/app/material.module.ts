@@ -10,6 +10,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatTableModule } from '@angular/material/table';
               MatAutocompleteModule,
               MatMenuModule,
               MatListModule,
-              MatTableModule],
+              MatTableModule,
+              MatPaginatorModule],
               
     exports: [MatFormFieldModule, 
               MatInputModule, 
@@ -35,7 +37,8 @@ import { MatTableModule } from '@angular/material/table';
               MatAutocompleteModule,
               MatMenuModule,
               MatListModule,
-              MatTableModule]
+              MatTableModule,
+              MatPaginatorModule]
 })
 export class MaterialModule {
 

@@ -15,7 +15,7 @@ Hi {{data.name}}</h1>
     (input)="onInputChange($event)"  [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-select [(value)]="locationSelected">
-      <mat-option style="background-color: white; color: black; border-color: black; border-width:thick;" *ngFor="let location of autocompleteLocation" [value]="location.name">
+      <mat-option  *ngFor="let location of autocompleteLocation" [value]="location.name">
         {{location.name}}
       </mat-option>
       </mat-select>
@@ -27,7 +27,7 @@ Hi {{data.name}}</h1>
 <mat-form-field appearance="outline" ngClass="field-location" >
     <mat-label style="color: black;"> No of Days </mat-label>
     <mat-select  [(value)]="daysSelected" formControlName="days">
-      <mat-option *ngFor="let day of days" [value]="day.value">
+      <mat-option *ngFor="let day of days" [value]="day.value" >
         {{ day.viewValue }}
       </mat-option>
     </mat-select>

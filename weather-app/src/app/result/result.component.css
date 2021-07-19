@@ -14,3 +14,11 @@ th, td {
 table {
     width: 100%;
   }
+
+  .mat-row {
+    height: auto;
+  }
+  
+  .mat-cell {
+    padding: 20px 50px 8px 0;
+  }

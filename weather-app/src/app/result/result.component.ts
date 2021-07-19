@@ -1,8 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
+
 
 export interface WeatherDetails {
   date: string;
@@ -19,7 +23,7 @@ export interface WeatherDetails {
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
 })
-export class ResultComponent implements OnInit, OnDestroy {
+export class ResultComponent implements OnInit, OnDestroy, AfterViewInit {
   data: {
     location: string;
     days: string;
@@ -31,8 +35,9 @@ export class ResultComponent implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['date', 'day', 'night', 'sources', 'maxTemperature', 'minTemperature', 'link'];
   isLoadingResults: boolean = false;
-  dataSource = new MatTableDataSource<WeatherDetails>(this.items);
+  dataSource: MatTableDataSource<WeatherDetails>;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -47,19 +52,24 @@ export class ResultComponent implements OnInit, OnDestroy {
     )
     this.isLoadingResults = true;
 
-    this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.data.days}day/${this.data.location}?apikey=GO7YhgH0FFaTEa0HsAieNGdofPFn5sfA`)
+    this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.data.days}day/${this.data.location}?apikey=${environment.apiKey}`)
         .subscribe(response  => {
           console.log(response)
          response["DailyForecasts"].map(forecast => {
             this.items.push(forecast)
-            this.isLoadingResults = false;
           })
+          this.isLoadingResults = false;
+          this.dataSource = new MatTableDataSource<WeatherDetails>(this.items);
          })
          console.log(this.items);
   }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   getDate(rDate): string{

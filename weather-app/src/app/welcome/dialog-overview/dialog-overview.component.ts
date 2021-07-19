@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, NumberValueAccessor, Validators } from "@angula
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { DialogData } from "./dialog-overview.model";
 import { ActivatedRoute, Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 interface Day {
   value: number;
@@ -58,7 +59,7 @@ constructor(
     console.log(this.location)
     if (this.location.length > 3) {
       console.log('in here')
-       this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=GO7YhgH0FFaTEa0HsAieNGdofPFn5sfA&q=${this.location}`)
+       this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${environment.apiKey}&q=${this.location}`)
           .subscribe(response => {
             console.log(response)
             for(let i= 0; i<Object.keys(response).length; i++){
