@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import * as XLSX from 'xlsx';
 
 
 
@@ -21,9 +22,9 @@ export interface WeatherDetails {
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+  styleUrls: ['./result.component.scss']
 })
-export class ResultComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ResultComponent implements OnInit, OnDestroy {
   data: {
     location: string;
     days: string;
@@ -60,21 +61,35 @@ export class ResultComponent implements OnInit, OnDestroy, AfterViewInit {
           })
           this.isLoadingResults = false;
           this.dataSource = new MatTableDataSource<WeatherDetails>(this.items);
+          this.dataSource.paginator = this.paginator;
+          console.log(this.dataSource)
          })
-         console.log(this.items);
+         console.log(this.dataSource);
   }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
-
   getDate(rDate): string{
     const date = new Date(rDate);
     return ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear();
+  }
+
+  downloadResult() {
+    let dataToExport = this.dataSource.filteredData
+      .map(x => ({
+        Date: x['Date'],
+        Day: x['Day']['PrecipitationType'],
+        Night: x['Night']['IconPhrase'],
+        Temp_max: x['Temperature']['Maximum'].Value,
+        Temp_min: x['Temperature']['Minimum'].Value,
+        Link: x['Link']
+      }));
+    const workSheet = XLSX.utils.json_to_sheet(dataToExport );
+    const workBook: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workBook, workSheet, 'SheetName');
+    XLSX.writeFile(workBook, 'report.xlsx');
   }
 }
 

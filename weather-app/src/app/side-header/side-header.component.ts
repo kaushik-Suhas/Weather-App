@@ -5,7 +5,7 @@ import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-side-header',
   templateUrl: './side-header.component.html',
-  styleUrls: ['./side-header.component.css']
+  styleUrls: ['./side-header.component.scss']
 })
 export class SideHeaderComponent implements OnInit {
   bgImgToggler: boolean = false;

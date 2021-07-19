@@ -14,7 +14,7 @@ interface Day {
 @Component({
     selector: 'app-dialog',
     templateUrl: './dialog-overview.component.html',
-    styleUrls: ['./dialog-overview.component.css']
+    styleUrls: ['./dialog-overview.component.scss']
 })
 
 export class DialogOverview {
