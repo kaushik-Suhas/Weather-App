@@ -13,6 +13,7 @@ import { DialogOverview } from './welcome/dialog-overview/dialog-overview.compon
 import { HttpClientModule } from '@angular/common/http';
 import { ResultComponent } from './result/result.component';
 import { ResultsComponent } from './result/results/results.component';
+import { ScrollingModule } from '@angular/cdk/scrolling'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { ResultsComponent } from './result/results/results.component';
     SideHeaderComponent,
     DialogOverview,
     ResultComponent,
-    ResultsComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { ResultsComponent } from './result/results/results.component';
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
