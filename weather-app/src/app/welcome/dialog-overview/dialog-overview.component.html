@@ -10,7 +10,7 @@ Hi {{data.name}}</h1>
 <form [formGroup]="locationValidations">
   <mat-form-field appearance="outline" ngClass="field-location" cdkScrollable>
     <mat-label style="color: black;">Location</mat-label>
-    <input matInput 
+    <input type="text" matInput 
     style="color: black;" formControlName="location"
     (input)="onInputChange($event)"  [matAutocomplete]="auto">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -24,7 +24,7 @@ Hi {{data.name}}</h1>
  <mat-error *ngIf="locationValidations.controls.location.touched && !locationValidations.get('location').hasError('pattern')"> Enter a Location! </mat-error>
 </mat-form-field>
 
-<!-- <mat-form-field appearance="outline" ngClass="field-location" >
+<mat-form-field appearance="outline" ngClass="field-location" >
     <mat-label style="color: black;"> No of Days </mat-label>
     <mat-select  [(value)]="daysSelected" formControlName="days">
       <mat-option *ngFor="let day of days" [value]="day.value" >
@@ -32,16 +32,16 @@ Hi {{data.name}}</h1>
       </mat-option>
     </mat-select>
     <mat-error *ngIf="locationValidations.controls.days.touched"> Select No of Days! </mat-error>
-</mat-form-field> -->
+</mat-form-field>
 </form>
 </div>
 
 
-<!-- <div mat-dialog-actions ngClass="mat-btn">
+<div mat-dialog-actions ngClass="mat-btn">
   <button mat-raised-button (click)="onNoClick()" 
   ngClass="lo-btn">No Thanks</button>
   <button mat-raised-button disabled [mat-dialog-close]="data.location" cdkFocusInitial
   [disabled]="locationValidations.controls['location'].invalid && !daysSelected"
   ngClass="hi-btn"
   (click)="openResult()">Proceed</button>
-</div> -->
+</div>
