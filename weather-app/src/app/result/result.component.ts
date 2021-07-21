@@ -4,8 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import * as XLSX from 'xlsx';
+import { MatSort } from '@angular/material/sort';
+
 
 
 
@@ -39,6 +41,8 @@ export class ResultComponent implements OnInit, OnDestroy {
   dataSource: MatTableDataSource<WeatherDetails>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -62,10 +66,13 @@ export class ResultComponent implements OnInit, OnDestroy {
           this.isLoadingResults = false;
           this.dataSource = new MatTableDataSource<WeatherDetails>(this.items);
           this.dataSource.paginator = this.paginator;
+          console.log(this.dataSource, 'data')
+          this.dataSource.sort = this.sort;
           console.log(this.dataSource)
          })
          console.log(this.dataSource);
   }
+  
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();

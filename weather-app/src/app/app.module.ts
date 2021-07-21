@@ -13,6 +13,7 @@ import { DialogOverview } from './welcome/dialog-overview/dialog-overview.compon
 import { HttpClientModule } from '@angular/common/http';
 import { ResultComponent } from './result/result.component';
 import { ResultsComponent } from './result/results/results.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ResultsComponent } from './result/results/results.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
 

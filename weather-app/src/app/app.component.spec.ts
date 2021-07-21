@@ -1,12 +1,37 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SideHeaderComponent } from './side-header/side-header.component';
+import { MatListModule } from '@angular/material/list';
+import { MaterialModule } from './material.module'
+import { AppRoutingModule } from './app-routing.module';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ResultComponent } from './result/result.component';
+import { ResultsComponent } from './result/results/results.component';
+import { DialogOverview } from './welcome/dialog-overview/dialog-overview.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+
+declare let Zone: any;
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        SideHeaderComponent,
+        WelcomeComponent,
+        ResultComponent,
+        ResultsComponent,
+        DialogOverview
       ],
+      imports: [
+        MatListModule,
+        MaterialModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterTestingModule
+      ]
     }).compileComponents();
   });
 
@@ -22,10 +47,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('weather-app');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('weather-app app is running!');
-  });
+  // it('should render title', () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   fixture.detectChanges();
+  //   const compiled = fixture.nativeElement;
+  //   expect(compiled.querySelector('.content span').textContent).toContain('weather-app app is running!');
+  // });
 });

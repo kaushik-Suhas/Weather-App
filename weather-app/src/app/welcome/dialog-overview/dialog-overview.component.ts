@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, NumberValueAccessor, Validators } from "@angula
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { DialogData } from "./dialog-overview.model";
 import { ActivatedRoute, Router } from "@angular/router";
-import { environment } from "src/environments/environment";
+import { environment } from "../../../environments/environment";
 
 interface Day {
   value: number;
