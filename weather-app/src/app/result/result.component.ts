@@ -6,7 +6,6 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
 import * as XLSX from 'xlsx';
-import { MatSort } from '@angular/material/sort';
 
 
 
@@ -28,9 +27,9 @@ export interface WeatherDetails {
 })
 export class ResultComponent implements OnInit, OnDestroy {
   data: {
-    location: string;
-    days: string;
-    name: string;
+    location: string,
+    days: string,
+    name: string
   }
   items = [];
   location: string;
@@ -41,12 +40,11 @@ export class ResultComponent implements OnInit, OnDestroy {
   dataSource: MatTableDataSource<WeatherDetails>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.subs = this.route.firstChild.params.subscribe(
+    this.subs = this.route.firstChild?.params.subscribe(
       (data) => {
          this.data = {
            location: data.key,
@@ -57,20 +55,15 @@ export class ResultComponent implements OnInit, OnDestroy {
     )
     this.isLoadingResults = true;
 
-    this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.data.days}day/${this.data.location}?apikey=${environment.apiKey}`)
+    this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.data?.days}day/${this.data?.location}?apikey=${environment.apiKey}`)
         .subscribe(response  => {
-          console.log(response)
          response["DailyForecasts"].map(forecast => {
             this.items.push(forecast)
           })
           this.isLoadingResults = false;
           this.dataSource = new MatTableDataSource<WeatherDetails>(this.items);
           this.dataSource.paginator = this.paginator;
-          console.log(this.dataSource, 'data')
-          this.dataSource.sort = this.sort;
-          console.log(this.dataSource)
          })
-         console.log(this.dataSource);
   }
   
 

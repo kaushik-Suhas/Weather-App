@@ -10,8 +10,8 @@ import { ResultsComponent } from './result/results/results.component';
 import { DialogOverview } from './welcome/dialog-overview/dialog-overview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-declare let Zone: any;
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -30,7 +30,8 @@ describe('AppComponent', () => {
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterTestingModule
+        RouterTestingModule,
+        BrowserAnimationsModule
       ]
     }).compileComponents();
   });
@@ -46,11 +47,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('weather-app');
   });
-
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement;
-  //   expect(compiled.querySelector('.content span').textContent).toContain('weather-app app is running!');
-  // });
 });

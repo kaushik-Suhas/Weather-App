@@ -51,17 +51,13 @@ constructor(
       location: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]],
       days: ['', Validators.required]
     });
-    console.log(this.locationValidations)
   }
   
   onInputChange(event: Event): void {
     this.location = (<HTMLInputElement>event.target).value;
-    console.log(this.location)
     if (this.location.length > 3) {
-      console.log('in here')
        this.http.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${environment.apiKey}&q=${this.location}`)
           .subscribe(response => {
-            console.log(response)
             for(let i= 0; i<Object.keys(response).length; i++){
               const obj = {
                 name: response[i].LocalizedName,

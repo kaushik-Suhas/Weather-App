@@ -21,7 +21,6 @@ export class WelcomeComponent  {
     this.nameValidations = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]]
     });
-     console.log(this.nameValidations)
   }
 
   openDialog(): void{
