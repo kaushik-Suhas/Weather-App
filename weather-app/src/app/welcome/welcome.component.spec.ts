@@ -27,4 +27,18 @@ describe('WelcomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should check for a valid name', () => {
+    let name=component.nameValidations.controls['name'];
+    expect(name.valid).toBeFalsy();
+
+    name.setValue('ABC')
+    expect(name.valid).toBeTruthy();
+
+    name.setValue('6546')
+    expect(name.valid).toBeFalsy();
+
+    name.setValue('12d@df')
+    expect(name.valid).toBeFalsy();
+  });
 });

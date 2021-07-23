@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Data, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
 import * as XLSX from 'xlsx';
@@ -54,9 +54,9 @@ export class ResultComponent implements OnInit, OnDestroy {
       }
     )
     this.isLoadingResults = true;
-
     this.http.get(`http://dataservice.accuweather.com/forecasts/v1/daily/${this.data?.days}day/${this.data?.location}?apikey=${environment.apiKey}`)
         .subscribe(response  => {
+          console.log(response, 'ed')
          response["DailyForecasts"].map(forecast => {
             this.items.push(forecast)
           })
