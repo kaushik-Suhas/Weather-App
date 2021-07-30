@@ -71,10 +71,10 @@ export class ResultComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  getDate(rDate): string{
-    const date = new Date(rDate);
-    return ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear();
-  }
+  // getDate(rDate): string{
+  //   const date = new Date(rDate);
+  //   return ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear();
+  // }
 
   downloadResult() {
     let dataToExport = this.dataSource.filteredData
